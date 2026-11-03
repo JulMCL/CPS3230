@@ -109,7 +109,7 @@ reservation that is not paid for gives its places back.
 | `mvn verify` | Compiles, runs the tests, writes the coverage report, builds the jar |
 | `mvn verify -Pintegration` | Also runs the integration tests, the ones named `*IT` |
 | `mvn verify -Pcheck -Dweek=NN` | Runs the self check for a week. Always two digits |
-| `mvn pitest:mutationCoverage` | Mutation testing, report in `target/pit-reports` |
+| `mvn test-compile pitest:mutationCoverage` | Mutation testing, report in `target/pit-reports` |
 | `mvn dependency-check:check` | Scans the dependencies for known vulnerabilities |
 | `java -jar target/ferry.jar` | Runs the application on port 8080 |
 
