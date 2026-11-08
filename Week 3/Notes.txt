@@ -1,0 +1,26 @@
+Common Pitfalls to Watch Out For in Black-Box Testing
+-   Confusing Two-Value and Three-Value BVA: Using only two-value 
+    BVA (boundary and immediate exterior) can miss errors where a developer
+    accidentally typed < instead of <=. The third value (the interior neighbor)
+    is mandatory to separate correct boundary logic from faulty implementations.
+
+-   Masking Invalid Inputs: Combining multiple invalid inputs in a single test 
+    case triggers the first refusal, which hides whether subsequent validation 
+    rules work. Rule: Exactly one invalid class per test, with everything else 
+    valid.
+
+-   Forgetting Derived Boundaries: Boundaries do not only apply to direct inputs
+    (like age); they apply to derived values (such as counting fare-paying 
+    passengers to trigger a group rate discount, where infants must be excluded).
+
+-   Merging Incompatible Decision Table Columns: Never merge columns whose
+    actions differ, even by a single action or warning flag (e.g., a rule that 
+    warns vs. one that does not must stay separate).
+
+-   Ignoring State Side-Effects: When testing invalid state transitions 
+    (e.g., checking in an unconfirmed booking), failing to assert that the 
+    object's state did not change misses partial-failure bugs
+
+-   Assuming AI Assistants Spot Omissions: AI assistants are good at listing 
+    obvious equivalence classes from a spec, but they routinely miss edge cases 
+    or ambiguous omissions that the specification omitted entirely.
