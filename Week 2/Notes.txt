@@ -1,0 +1,26 @@
+Common Pitfalls to Watch Out For in Java Tests
+-   Regex and Delimiters (Pattern.quote()): Use Pattern.quote() for 
+    custom delimiters (like *, $, [, ]) so special regex characters are 
+    treated literally. Leave structural regexes (like [,\\n] or |) unquoted 
+    so the regex engine interprets them correctly.
+
+-   String Escape Sequences in Tests: In Java string literals, writing \\n 
+    creates a literal backslash followed by an n instead of an actual newline 
+    character (\n). Searching with indexOf('\n') on a string with \\n returns 
+    -1, triggering a StringIndexOutOfBoundsException.
+
+-   Database & Network Smells: Tests depending on live databases or network 
+    services are slow and prone to flaky failures.
+
+-   Test-Order Dependencies: Relying on execution order (e.g., test1 creating 
+    state required by test2) causes failures when run in Maven or CI pipelines.
+
+-   System Clock Dependencies: Relying on LocalDate.now() causes tests to break
+    unexpectedly on future dates.
+
+-   Missing Assertions: Writing code just to inflate code coverage metrics without 
+    real assertions gives false confidence.
+
+-   The Oracle Problem (AI-Generated Tests): AI tools generating tests after the 
+    code often assert what the code actually does rather than what the specification
+    demands. Always validate AI tests manually against specifications.
