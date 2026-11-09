@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import org.junit.jupiter.api.Test;
 
-public class MoneyTest {
+public class MoneyWeek2Test {
 
     @Test
     void shouldReturnTheSameExactAmount() {
